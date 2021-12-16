@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .profile-container{
+        align-items: center;
+        }
+        .profile-image{
+        float: left;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        }
+        .profile-image img{
+        border-radius: 50%; 
+        }
+        .profile-name{
+        display: inline-block;
+        font-size: 24px;
+        margin-top: 10px;
+        }
+        .profile-status{
+        margin-top: 4px;
+        font-size: 15px;
+        color: #818181;
+        }
+        a:link{
+        text-decoration: none;
+            
+        }
+        a:active{
+        text-decoration: none;
+        color: blue;
+        }
+        .flex-container {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items:flex-start;
+        align-content:flex-start;
+        }
+        .flex-container > div {
+        background-color: #f1f1f1;
+        width: 300px;
+        margin: 20px;
+        border-radius: 5px;
+        box-shadow:#818181;
+        flex: 0 0 auto;
+        }
+        .flex-container > div > h1 {
+        text-align: left;
+        margin-left: 10px;
+        position: relative;
+        line-height: 30px;
+        font-size: 25px;
+        margin-bottom: 2px;
+        }
+
+        #little {
+        text-align: left;
+        margin-left: 10px;
+        position: relative;
+        font-size: 15px;
+        margin-top: 0px;
+        color: #818181;
+        }
+        #paragraph {
+        text-align: left;
+        margin-left: 10px;
+        margin-right: 10px;
+        position: relative;
+        font-size: 15px;
+        }
+        button {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        }
+        #button-modal{
+            float: right;
+            margin-right: 10px;
+        }
+        #desc {
+        text-align: right;
+        margin-left: 10px;
+        position: relative;
+        font-size: 15px;
+        }
+
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        }  
+        .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        }
+
+        .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        }  
+        .checkbox-button{
+            margin-bottom: 10px;
+        }
+        .checkbox-button-like{
+        float: right;
+        display: flex;
+        width: 30px;
+        height: 30px;
+        margin-right: 30px;
+        margin-top: 10px;
+        }
+        .checkbox-button-bm{
+        float: right;
+        display: flex;
+        width: 20px;
+        height: 30px;
+        margin-right: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        }
+        .checkbox-button-map{
+        float: right;
+        display: flex;
+        width: 20px;
+        height: 30px;
+        margin-right: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        }
+        .like-btn {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+        }
+        .fa-heart{
+        position: absolute;
+        font-size: 30px;
+        -webkit-text-stroke: 2px #000000;
+        color: whitesmoke;
+        
+        }
+        .like-btn:checked + .fa-heart{
+        color: rgb(0, 0, 0);
+        }
+        .bm-btn {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+        }
+        .fa-bookmark{
+        position: absolute;
+        font-size: 30px;
+        -webkit-text-stroke: 2px #000000;
+        color: whitesmoke;
+        }
+        .bm-btn:checked + .fa-bookmark{
+        color: rgb(0, 0, 0);
+        }
+        .map-btn {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+        }
+        .fa-map-marker{
+        position: absolute;
+        font-size: 30px;
+        -webkit-text-stroke: 2px #000000;
+        color: whitesmoke;
+        }
+
+        </style>
+<title>ZettaByte Test</title>
+</head>
+<body style="background-color: #d8d8d8;">
+    <h1>Flexible Boxes</h1>
+
+    <div class="flex-container">
+        
+      <div>
+          <img src="img/travel1.jpg" style="width: 100%;">
+          <h1>Top Grass</h1>
+          <p id="little">More than 100 locations</p>
+          <p id="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan diam sit amet enim tincidunt dapibus.</p>
+          <div>
+            <button><a href="#">Share</a></button>
+            <button><a href="#">Explore</a></button>
+            <button class="myBtn" id="button-modal">&nu;</button>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <img src="img/travel1.jpg">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan diam sit amet enim tincidunt dapibus. Quisque neque mauris, ullamcorper dictum feugiat ut, posuere et urna. Nunc ut nunc et diam bibendum finibus nec eu ligula. Nulla finibus, augue vitae fermentum cursus, nulla felis suscipit enim, at varius purus quam in nunc. Sed eleifend purus metus, quis ornare lacus pulvinar quis. Cras ut pulvinar magna, non feugiat risus. Ut tempor lectus eu eros luctus dictum. Fusce pulvinar risus sit amet metus viverra blandit. Nunc aliquam eget tellus vel dignissim. Praesent vulputate augue turpis, nec efficitur eros porta eu.</p>        
+                    
+                </div>
+            </div>
+          </div>
+        </div>
+        <div>
+            <img src="img/travel2.jpg" style="width: 100%;">
+            <h1>Top Sea</h1>
+            <p id="little">More than 100 locations</p>
+            <div>
+              <button><a href="#">Share</a></button>
+              <button><a href="#">Explore</a></button>
+              <button class="myBtn" id="button-modal">&nu;</button>
+              <div id="myModal2" class="modal">
+                  <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <img src="img/travel2.jpg">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan diam sit amet enim tincidunt dapibus. Quisque neque mauris, ullamcorper dictum feugiat ut, posuere et urna. Nunc ut nunc et diam bibendum finibus nec eu ligula. Nulla finibus, augue vitae fermentum cursus, nulla felis suscipit enim, at varius purus quam in nunc. Sed eleifend purus metus, quis ornare lacus pulvinar quis. Cras ut pulvinar magna, non feugiat risus. Ut tempor lectus eu eros luctus dictum. Fusce pulvinar risus sit amet metus viverra blandit. Nunc aliquam eget tellus vel dignissim. Praesent vulputate augue turpis, nec efficitur eros porta eu.</p>
+                      
+                    </div>
+              </div>
+            </div>
+        </div>
+      <div>
+        <div class="profile-container">
+            <div class="profile-image">
+            <img src="img/avatar.jpg" width="50px" height="50px">
+        </div>
+        <div class="profile-name">
+            <b>Angeline</b>
+        </div>
+        <div class="profile-status">
+            <small>20 min. ago</small>
+        </div>
+        </div>
+          
+          <img src="img/travel3.jpg" style="width: 100%;">
+          <h1>Good One</h1>
+          <p id="little">Nice vacation!</p>
+          <p id="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan diam sit amet enim tincidunt dapibus.</p>
+      </div>  
+      <div>
+          <img src="img/travel4.jpg" style="width: 100%;">
+          
+          <div class="checkbox-button-map">
+          <input type="checkbox" class="map-btn">
+          <i class="fa fa-map-marker" ></i></div>
+          <div class="checkbox-button-bm">
+            <input type="checkbox" class="bm-btn">
+            <i class="fa fa-bookmark"></i>
+            </div>
+          <div class="checkbox-button-like">
+          <input type="checkbox" class="like-btn">
+          <i class="fa fa-heart"></i></div>
+          
+        </div>
+            
+      </div>
+    </div>
+<script>
+var modal = document.getElementsByClassName('modal');
+var btn = document.getElementsByClassName("myBtn");
+var span = document.getElementsByClassName("close");
+
+btn[0].onclick = function() {
+    modal[0].style.display = "block";
+}
+
+btn[1].onclick = function() {
+    modal[1].style.display = "block";
+}
+
+span[0].onclick = function() {
+    modal[0].style.display = "none";
+}
+
+span[1].onclick = function() {
+    modal[1].style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal[0]) {
+         modal[0].style.display = "none";
+     }
+    if (event.target == modal[1]) {
+         modal[1].style.display = "none";
+     }  
+}
+</script>
+
+
+</body>
+</html>
